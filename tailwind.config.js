@@ -6,6 +6,7 @@ module.exports = {
   theme: {
     screens: {
       phone : '350px',
+      laptop : '1190px',
     },
   },
   plugins: [

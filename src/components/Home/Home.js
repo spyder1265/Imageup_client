@@ -162,7 +162,7 @@ const Home = () => {
             <div className="flex w-screen absolute bottom-0  flex justify-center bg-black xl:basis-[50%]">
                 <div className="grid  auto-cols-max grid-flow-col overflow-y-auto gap-x-16 mx-8 px-12 py-12 h-full w-full place-items-center  ">
                     {images.reverse().map((image,index)=>(
-                            <div key={index} className="bg-white border border-white relative group w-[450px] phone:w-[200px] phone:h-[200px] rounded-lg h-80" >
+                            <div key={index} className="bg-white border border-white relative group laptop:w-[450px] laptop:h-[450px]  phone:w-[200px] phone:h-[200px] rounded-lg h-80" >
                                 <img src={image.url} className="rounded-lg flex relative top-[0px]  object-cover w-full h-full" alt={image.name}  />
                                 <div className="rounded-lg h-full w-full absolute top-0 right-0 pt-4 bg-gray-900 bg-opacity-50 transition-opacity duration-300 opacity-0 group-hover:opacity-100 ">
                                     <button className="flex justify-end bg-transparent z-10 w-full h-full ">
