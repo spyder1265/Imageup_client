@@ -1,5 +1,5 @@
 import React, {useState} from "react";
-import logo from '../../Assets/Logos/light logo.svg';
+import logo from '../../Assets/Logos/light_logo.svg';
 import {Link} from "react-router-dom";
 import { motion} from 'framer-motion';
 import axios from "axios";
