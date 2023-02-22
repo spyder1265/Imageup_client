@@ -18,6 +18,7 @@ const Home = () => {
     useEffect(() => {
         // Call function to get all images on component mount
         getImages().then(() => {});
+        // eslint-disable-next-line
     }, []);
 
     const getImages = async () => {
