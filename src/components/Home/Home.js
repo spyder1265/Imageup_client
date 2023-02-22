@@ -165,7 +165,7 @@ const Home = () => {
                             <div key={index} className="bg-white border border-white relative group laptop:w-[300px] laptop:h-[300px]  phone:w-[200px] phone:h-[200px] rounded-lg h-80" >
                                 <img src={image.url} className="rounded-lg flex relative top-[0px]  object-cover w-full h-full" alt={image.name}  />
                                 <div className="rounded-lg h-full w-full absolute top-0 right-0 pt-4 bg-gray-900 bg-opacity-50 transition-opacity duration-300 opacity-0 group-hover:opacity-100 ">
-                                    <button className="flex justify-end bg-transparent z-10 w-full h-full ">
+                                    <a href={image.url} target="_blank" className="flex justify-end bg-transparent z-10 w-full h-full ">
                                         <div>
                                             {/* eslint-disable-next-line jsx-a11y/anchor-is-valid */}
                                             <a  className="flex text-white group w-6 pr-10 h-6 focus:outline-none text-2xl " onClick={()=> deleteImage(image.name) }>
@@ -173,7 +173,7 @@ const Home = () => {
                                                 <i className="fa-solid group-hover:animate-pulse  fa-trash group "></i>
                                             </a>
                                         </div>
-                                    </button>
+                                    </a>
                                 </div>
                             </div>
                         ))}
