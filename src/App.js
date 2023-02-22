@@ -1,24 +1,37 @@
-import logo from './logo.svg';
 import './App.css';
+import RRoutes from "./components/Routes/RRoutes";
+import { motion, AnimatePresence } from "framer-motion";
+import {useEffect, useState} from "react";
+
+
 
 function App() {
+
+  const [isLoaded, setIsLoaded] = useState(false);
+
+  const containerVariants = {
+    hidden: { opacity: 0 },
+    visible: { opacity: 1, transition: { duration: 2 } },
+    exit: { opacity: 0, transition: { duration: 0.5 } },
+  };
+
+  useEffect(() => {
+    setIsLoaded(true);
+  }, []);
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
+      <AnimatePresence>
+        <motion.div
+            variants={containerVariants}
+            initial="hidden"
+            animate="visible"
+            exit="exit"
         >
-          Learn React
-        </a>
-      </header>
-    </div>
+          {isLoaded && (
+                <RRoutes/>
+          )}
+        </motion.div>
+      </AnimatePresence>
   );
 }
 
