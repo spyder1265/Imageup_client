@@ -165,15 +165,19 @@ const Home = () => {
                             <div key={index} className="bg-white border border-white relative group laptop:w-[300px] laptop:h-[300px]  phone:w-[200px] phone:h-[200px] rounded-lg h-80" >
                                 <img src={image.url} className="rounded-lg flex relative top-[0px]  object-cover w-full h-full" alt={image.name}  />
                                 <div className="rounded-lg h-full w-full absolute top-0 right-0 pt-4 bg-gray-900 bg-opacity-50 transition-opacity duration-300 opacity-0 group-hover:opacity-100 ">
-                                    <a href={image.url} target="_blank" className="flex justify-end bg-transparent z-10 w-full h-full ">
-                                        <div>
+                                    <div className="flex justify-end bg-transparent z-10 w-full h-full ">
+                                        <div className="flex min-w-full justify-between ">
                                             {/* eslint-disable-next-line jsx-a11y/anchor-is-valid */}
-                                            <a  className="flex text-white group w-6 pr-10 h-6 focus:outline-none text-2xl " onClick={()=> deleteImage(image.name) }>
-                                                <span className="sr-only">options</span>
-                                                <i className="fa-solid group-hover:animate-pulse  fa-trash group "></i>
+                                            <a href={image.url}  target="_blank" rel="noreferrer" className="flex text-white justify-start group w-6 pl-6 h-6 focus:outline-none text-2xl ">
+                                                <span className="sr-only">download</span>
+                                                <i className="fa-solid hover:animate-pulse fa-expand"></i>
                                             </a>
+                                            <button className="flex text-white justify-end group w-6 pr-6 h-6 focus:outline-none text-2xl " onClick={()=> deleteImage(image.name) }>
+                                                <span className="sr-only">options</span>
+                                                <i className="fa-solid hover:animate-pulse fa-trash"></i>
+                                            </button>
                                         </div>
-                                    </a>
+                                    </div>
                                 </div>
                             </div>
                         ))}
