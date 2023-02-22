@@ -15,7 +15,7 @@ const Form = () => {
 
     const handleRegister = () => {
         axios
-            .post('http://localhost:4000/register', {
+            .post('https://imageup.onrender.com/register', {
                 name : name,
                 username: username,
                 email: email,
@@ -35,7 +35,7 @@ const Form = () => {
 
 // send POST request to server to login user
     const login = () => {
-        return axios.post('http://localhost:4000/login', {
+        return axios.post('https://imageup.onrender.com/login', {
             username,
             password
         })
