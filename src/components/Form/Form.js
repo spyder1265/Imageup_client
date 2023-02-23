@@ -168,7 +168,7 @@ const Form = () => {
                     <div className="flex w-full p-2 flex-col mb-4 border-t border-black justify-center ">
                         <button type="button" className="py-2 text-[13px] h-8 text-indigo-500 hover:underline " onClick={()=>changeFormType()}>{isLogin ? " Don't have an account?" : "Already have an account"}</button>
                         {isLogin &&
-                        <Link to="/" className="py-2 text-[11px] text-center h-8 text-indigo-500 hover:underline "> Forgot your password ?</Link>
+                        <Link to="/Form/PasswordReset" className="py-2 text-[11px] text-center h-8 text-indigo-500 hover:underline "> Forgot your password ?</Link>
                         }
                     </div>
                 </form>
