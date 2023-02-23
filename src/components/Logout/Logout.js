@@ -1,12 +1,11 @@
 import React from "react";
-import {useNavigate} from "react-router-dom";
+// import {useNavigate} from "react-router-dom";
 
 const Logout = () => {
 
-    const navigate = useNavigate();
     const handleLogout = () => {
         sessionStorage.clear()
-        navigate('/')
+        window.location.reload();
     }
 
 
