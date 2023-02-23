@@ -37,7 +37,7 @@ const PasswordReset = () => {
 
         try {
             const res = await axios.post('https://imageup.onrender.com/reset-password', {username});
-            console.log(res.data); // do something with the response, e.g. show a success message
+            // console.log(res.data); // do something with the response, e.g. show a success message
             sessionStorage.setItem('2fa', true);
             navigate('/Form/PasswordReset/TwoFA');
         } catch (err) {

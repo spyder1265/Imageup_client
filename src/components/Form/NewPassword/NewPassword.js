@@ -1,7 +1,8 @@
-import React, {useState} from "react";
+import React, {useEffect, useState} from "react";
 import {motion} from "framer-motion";
 import logo from "../../../Assets/Logos/light_logo.svg";
 import { useNavigate} from "react-router-dom";
+import axios from "axios";
 
 const NewPassword = () => {
     const [username, setUsername] = useState('');
@@ -10,6 +11,27 @@ const NewPassword = () => {
     const [errors, setErrors] = useState([]);
     const validationErrors = [];
     const navigate = useNavigate();
+    const userId = sessionStorage.getItem('userId');
+
+
+
+
+
+    const getUser = async () => {
+        try {
+            const response = await axios.get(`https://imageup.onrender.com/user/${userId}`);
+            const username = response.data.username;
+            setUsername(username);
+        } catch (error) {
+            console.log(error);
+        }
+    };
+
+    useEffect(() => {
+        // Call function to get all images on component mount
+        getUser().then(() => {});
+        // eslint-disable-next-line
+    }, []);
 
 
 
@@ -18,14 +40,15 @@ const NewPassword = () => {
         visible: { opacity: 1, y: 0, transition: { duration: 1, delay: 0.5 } },
     };
 
-    const handleSubmit = (event) => {
+    const handleSubmit = async (event) => {
         event.preventDefault();
 
 
         if (!password) {
             validationErrors.push('Password is required');
-        }
-        if (password !== confirmPassword) {
+        } else if (password.length < 8) {
+            validationErrors.push('Password is less than 8 characters');
+        } else if (password !== confirmPassword) {
             validationErrors.push('Passwords do not match');
         }
 
@@ -34,9 +57,19 @@ const NewPassword = () => {
             setErrors(validationErrors);
             return;
         }
-        sessionStorage.setItem("authPassed", true);
-        navigate('/Home');
 
+        try {
+            const response = await axios.post(`https://imageup.onrender.com/set-password`,{
+                userId:userId,
+                username:username,
+                password: password,
+            });
+            console.log(response.data.message)
+            sessionStorage.setItem("authPassed", true);
+            navigate('/');
+        } catch (error) {
+            console.log(error);
+        }
     }
 
     return(
@@ -59,7 +92,7 @@ const NewPassword = () => {
                 <form onSubmit={handleSubmit}>
 
                     <div className="flex w-full mb-4 gap-2">
-                        <input type="text" name="username" value={username} onChange={null} placeholder="Username" className="form-input focus:border-0 rounded h-10"/>
+                        <input type="text" name="username" value={username} readOnly={true} onChange={null} placeholder="Username" className="form-input focus:border-0 rounded h-10"/>
                     </div>
                     <div className="flex w-full mb-4 gap-2">
                         <input type="password" name="New password" value={password} onChange={event => setPassword(event.target.value) } placeholder="New password" className="form-input focus:border-0 rounded h-10"/>
@@ -74,9 +107,9 @@ const NewPassword = () => {
                     </div>
                 </form>
                 {errors !== [null] &&
-                    <div className="w-full  text-center">
+                    <div className="max-w-[200px]  text-center">
                         {errors.map((error, index) => (
-                            <div key={index} className="text-red-500">{error}</div>
+                            <div key={index} className="text-red-500 break-words">{error}</div>
                         ))}
                     </div>
                 }
