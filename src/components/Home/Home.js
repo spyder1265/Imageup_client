@@ -23,7 +23,7 @@ const Home = () => {
 
     const getImages = async () => {
         try {
-            const response = await axios.get(`https://imageup.onrender.com/images/${userId}`);
+            const response = await axios.get(`https://image-up.onrender.com/images/${userId}`);
             const images = response.data.map((image) => {
                 return { url: image.url, name: image.name };
             });
