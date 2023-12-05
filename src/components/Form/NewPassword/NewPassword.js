@@ -19,7 +19,7 @@ const NewPassword = () => {
 
     const getUser = async () => {
         try {
-            const response = await axios.get(`https://imageup.onrender.com/user/${userId}`);
+            const response = await axios.get(`https://image-up.onrender.com/user/${userId}`);
             const username = response.data.username;
             setUsername(username);
         } catch (error) {
