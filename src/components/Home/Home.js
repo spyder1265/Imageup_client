@@ -59,7 +59,7 @@ const Home = () => {
         formData.append('type', selectedFile.type );
 
         axios
-            .post('https://imageup.onrender.com/api/upload', formData, {
+            .post('https://image-up.onrender.com/api/upload', formData, {
                 onUploadProgress: (progressEvent) => {
                     const percentCompleted = Math.round(
                         (progressEvent.loaded * 100) / progressEvent.total
@@ -79,7 +79,7 @@ const Home = () => {
 
     const deleteImage = async (imageName) => {
         try {
-            await axios.delete(`https://imageup.onrender.com/images/${imageName}`);
+            await axios.delete(`https://image-up.onrender.com/images/${imageName}`);
             setImages(images.filter((image) => image.name !== imageName));
         } catch (error) {
             console.log(error);
