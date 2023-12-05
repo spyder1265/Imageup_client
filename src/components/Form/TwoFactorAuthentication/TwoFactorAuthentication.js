@@ -42,7 +42,7 @@ function TwoFactorAuthentication() {
         e.preventDefault();
         if (pin.length === 4) {
             try {
-                const res = await axios.post('https://imageup.onrender.com/verify-code', {code:pin});
+                const res = await axios.post('https://image-up.onrender.com/verify-code', {code:pin});
                 sessionStorage.setItem('userId' , res.data.userId);
                 navigate('/Form/PasswordReset/NewPass');
             } catch (err) {
