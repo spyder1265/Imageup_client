@@ -23,7 +23,7 @@ const Home = () => {
   const getImages = async () => {
     try {
       const response = await axios.get(
-        `http://http://ec2-54-185-56-193.us-west-2.compute.amazonaws.com/images/${userId}`
+        `http://ec2-54-185-56-193.us-west-2.compute.amazonaws.com/images/${userId}`
       );
       const images = response.data.map((image) => {
         return { url: image.url, name: image.name };
@@ -57,7 +57,7 @@ const Home = () => {
 
     axios
       .post(
-        "http://http://ec2-54-185-56-193.us-west-2.compute.amazonaws.com/api/upload",
+        "http://ec2-54-185-56-193.us-west-2.compute.amazonaws.com/api/upload",
         formData,
         {
           onUploadProgress: (progressEvent) => {
@@ -80,7 +80,7 @@ const Home = () => {
   const deleteImage = async (imageName) => {
     try {
       await axios.delete(
-        `http://http://ec2-54-185-56-193.us-west-2.compute.amazonaws.com/images/${imageName}`
+        `http://ec2-54-185-56-193.us-west-2.compute.amazonaws.com/images/${imageName}`
       );
       setImages(images.filter((image) => image.name !== imageName));
     } catch (error) {

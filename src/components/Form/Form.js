@@ -16,7 +16,7 @@ const Form = () => {
   const handleRegister = () => {
     axios
       .post(
-        "http://http://ec2-54-185-56-193.us-west-2.compute.amazonaws.com/register",
+        "http://ec2-54-185-56-193.us-west-2.compute.amazonaws.com/register",
         {
           name: name,
           username: username,
@@ -39,13 +39,10 @@ const Form = () => {
   // send POST request to server to login user
   const login = () => {
     return axios
-      .post(
-        "http://http://ec2-54-185-56-193.us-west-2.compute.amazonaws.com/login",
-        {
-          username,
-          password,
-        }
-      )
+      .post("http://ec2-54-185-56-193.us-west-2.compute.amazonaws.com/login", {
+        username,
+        password,
+      })
       .then((response) => {
         sessionStorage.setItem("authPassed", true);
         window.location.reload();

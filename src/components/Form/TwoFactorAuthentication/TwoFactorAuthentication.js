@@ -36,7 +36,7 @@ function TwoFactorAuthentication() {
     if (pin.length === 4) {
       try {
         const res = await axios.post(
-          "http://http://ec2-54-185-56-193.us-west-2.compute.amazonaws.com/verify-code",
+          "http://ec2-54-185-56-193.us-west-2.compute.amazonaws.com/verify-code",
           {
             code: pin,
           }

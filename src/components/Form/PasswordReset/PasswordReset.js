@@ -30,7 +30,7 @@ const PasswordReset = () => {
 
     try {
       const res = await axios.post(
-        "http://http://ec2-54-185-56-193.us-west-2.compute.amazonaws.com/reset-password",
+        "http://ec2-54-185-56-193.us-west-2.compute.amazonaws.com/reset-password",
         {
           username,
         }
