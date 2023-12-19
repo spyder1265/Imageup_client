@@ -13,6 +13,8 @@ const Home = () => {
   const userId = sessionStorage.getItem("userId");
 
   useEffect(() => {
+    sessionStorage.getItem("authPassed") !== "true" &&
+      window.location.replace("/");
     // Call function to get all images on component mount
     getImages().then(() => {});
     // eslint-disable-next-line
@@ -21,7 +23,7 @@ const Home = () => {
   const getImages = async () => {
     try {
       const response = await axios.get(
-        `http://54.185.56.193:4000/images/${userId}`
+        `http://http://ec2-54-185-56-193.us-west-2.compute.amazonaws.com/images/${userId}`
       );
       const images = response.data.map((image) => {
         return { url: image.url, name: image.name };
@@ -54,14 +56,18 @@ const Home = () => {
     formData.append("type", selectedFile.type);
 
     axios
-      .post("http://54.185.56.193:4000/api/upload", formData, {
-        onUploadProgress: (progressEvent) => {
-          const percentCompleted = Math.round(
-            (progressEvent.loaded * 100) / progressEvent.total
-          );
-          setUploadProgress(percentCompleted);
-        },
-      })
+      .post(
+        "http://http://ec2-54-185-56-193.us-west-2.compute.amazonaws.com/api/upload",
+        formData,
+        {
+          onUploadProgress: (progressEvent) => {
+            const percentCompleted = Math.round(
+              (progressEvent.loaded * 100) / progressEvent.total
+            );
+            setUploadProgress(percentCompleted);
+          },
+        }
+      )
       .then(() => {
         setSuccess(true);
         getImages().then(() => {});
@@ -73,7 +79,9 @@ const Home = () => {
 
   const deleteImage = async (imageName) => {
     try {
-      await axios.delete(`http://54.185.56.193:4000/images/${imageName}`);
+      await axios.delete(
+        `http://http://ec2-54-185-56-193.us-west-2.compute.amazonaws.com/images/${imageName}`
+      );
       setImages(images.filter((image) => image.name !== imageName));
     } catch (error) {
       console.log(error);

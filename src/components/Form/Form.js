@@ -15,12 +15,15 @@ const Form = () => {
 
   const handleRegister = () => {
     axios
-      .post("http://54.185.56.193:4000/register", {
-        name: name,
-        username: username,
-        email: email,
-        password: password,
-      })
+      .post(
+        "http://http://ec2-54-185-56-193.us-west-2.compute.amazonaws.com/register",
+        {
+          name: name,
+          username: username,
+          email: email,
+          password: password,
+        }
+      )
       .then((response) => {
         sessionStorage.setItem("authPassed", true);
         console.log(response);
@@ -36,10 +39,13 @@ const Form = () => {
   // send POST request to server to login user
   const login = () => {
     return axios
-      .post("http://54.185.56.193:4000/login", {
-        username,
-        password,
-      })
+      .post(
+        "http://http://ec2-54-185-56-193.us-west-2.compute.amazonaws.com/login",
+        {
+          username,
+          password,
+        }
+      )
       .then((response) => {
         sessionStorage.setItem("authPassed", true);
         window.location.reload();

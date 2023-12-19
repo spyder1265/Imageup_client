@@ -35,9 +35,12 @@ function TwoFactorAuthentication() {
     e.preventDefault();
     if (pin.length === 4) {
       try {
-        const res = await axios.post("http://54.185.56.193:4000/verify-code", {
-          code: pin,
-        });
+        const res = await axios.post(
+          "http://http://ec2-54-185-56-193.us-west-2.compute.amazonaws.com/verify-code",
+          {
+            code: pin,
+          }
+        );
         sessionStorage.setItem("userId", res.data.userId);
         navigate("/Form/PasswordReset/NewPass");
       } catch (err) {

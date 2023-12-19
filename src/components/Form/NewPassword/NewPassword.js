@@ -16,7 +16,7 @@ const NewPassword = () => {
   const getUser = async () => {
     try {
       const response = await axios.get(
-        `http://54.185.56.193:4000/user/${userId}`
+        `http://http://ec2-54-185-56-193.us-west-2.compute.amazonaws.com/user/${userId}`
       );
       const username = response.data.username;
       setUsername(username);
@@ -55,7 +55,7 @@ const NewPassword = () => {
 
     try {
       const response = await axios.post(
-        `http://54.185.56.193:4000/set-password`,
+        `http://http://ec2-54-185-56-193.us-west-2.compute.amazonaws.com/set-password`,
         {
           userId: userId,
           username: username,

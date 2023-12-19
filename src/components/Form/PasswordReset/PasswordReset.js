@@ -29,9 +29,12 @@ const PasswordReset = () => {
     }
 
     try {
-      const res = await axios.post("http://54.185.56.193:4000/reset-password", {
-        username,
-      });
+      const res = await axios.post(
+        "http://http://ec2-54-185-56-193.us-west-2.compute.amazonaws.com/reset-password",
+        {
+          username,
+        }
+      );
       // console.log(res.data); // do something with the response, e.g. show a success message
       sessionStorage.setItem("2fa", true);
       navigate("/Form/PasswordReset/TwoFA");
